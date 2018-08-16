@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class StarGame extends ApplicationAdapter {
 	SpriteBatch batch;
-	SpriteBatch backGround;
 	Texture img;
 	Texture imgBackGround;
 	
