@@ -5,9 +5,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 import ru.geekbrains.stargame.base.Base2DScreen;
+import ru.geekbrains.stargame.base.Sprite;
+import ru.geekbrains.stargame.math.Rect;
 
 /*
     * Экран меню
@@ -15,9 +18,8 @@ import ru.geekbrains.stargame.base.Base2DScreen;
 
 public class MenuScreen extends Base2DScreen {
 
-    SpriteBatch batch;
     Texture img;
-    Texture imgBackGround;
+    Sprite logo;
 
     public MenuScreen(Game game) {
         super(game);
@@ -26,10 +28,9 @@ public class MenuScreen extends Base2DScreen {
     @Override
     public void show() {
         super.show();
-        batch = new SpriteBatch();
-        batch.getProjectionMatrix().idt();
-        imgBackGround = new Texture("background.jpg");
         img = new Texture("badlogic.jpg");
+        logo = new Sprite(new TextureRegion(img));
+        logo.setSize(1f, 1f);
     }
 
     @Override
@@ -39,37 +40,29 @@ public class MenuScreen extends Base2DScreen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.begin();
-        batch.draw(imgBackGround, 0, 0);
-        batch.draw(img, -1f, -1f, 2f, 2f);
+        logo.draw(batch);
         batch.end();
+
     }
 
     @Override
     public void dispose() {
         super.dispose();
-        batch.dispose();
         img.dispose();
     }
 
     @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        super.touchDown(screenX, screenY, pointer, button);
-        return false;
+    public void resize(Rect worldBounds) {
+        super.resize(worldBounds);
     }
 
     @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        super.touchUp(screenX, screenY, pointer, button);
-        return false;
+    public boolean touchDown(Vector2 touch, int pointer) {
+        return super.touchDown(touch, pointer);
     }
 
     @Override
-    public boolean keyDown(int keycode) {
-        return super.keyDown(keycode);
-    }
-
-    @Override
-    public boolean keyUp(int keycode) {
-        return super.keyUp(keycode);
+    public boolean touchUp(Vector2 touch, int pointer) {
+        return super.touchUp(touch, pointer);
     }
 }
