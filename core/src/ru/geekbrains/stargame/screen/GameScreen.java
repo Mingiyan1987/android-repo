@@ -66,9 +66,6 @@ public class GameScreen extends Base2DScreen implements ActionListener {
     private ButtonNewGame buttonNewGame;
 
     private Font font;
-    private StringBuilder sbFrags = new StringBuilder();
-    private StringBuilder sbHP = new StringBuilder();
-    private StringBuilder sbLevel = new StringBuilder();
 
     int frags;
 
@@ -128,17 +125,7 @@ public class GameScreen extends Base2DScreen implements ActionListener {
             messageGameOver.draw(batch);
             buttonNewGame.draw(batch);
         }
-        printInfo();
         batch.end();
-    }
-
-    public void printInfo() {
-        sbFrags.setLength(0);
-        sbHP.setLength(0);
-        sbLevel.setLength(0);
-        font.draw(batch, sbFrags.append(FRAGS).append(frags), worldBounds.getLeft(), worldBounds.getTop());
-        font.draw(batch, sbHP.append(HP).append(mainShip.getHp()), worldBounds.pos.x, worldBounds.getTop(), Align.center);
-        font.draw(batch, sbLevel.append(LEVEL).append(enemyEmitter.getLevel()), worldBounds.getRight(), worldBounds.getTop(),  Align.right);
     }
 
     public void update(float delta) {
