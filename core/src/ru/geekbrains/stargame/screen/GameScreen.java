@@ -68,6 +68,7 @@ public class GameScreen extends Base2DScreen implements ActionListener {
     private Font font;
     private StringBuilder sbFrags = new StringBuilder();
     private StringBuilder sbHP = new StringBuilder();
+    
     private StringBuilder sbLevel = new StringBuilder();
 
     int frags;
