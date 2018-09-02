@@ -177,6 +177,8 @@ public class GameScreen extends Base2DScreen implements ActionListener {
             }
         }
 
+        
+
         List<Bullet> bulletList = bulletPool.getActiveObjects();
         for (Enemy enemy : enemyList) {
             if (enemy.isDestroyed()) {
